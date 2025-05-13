@@ -1,4 +1,6 @@
-🥗 Calorie Calculator Website
+                                                                                        🥗 Calorie Calculator Website
+
+
 Welcome to the Calorie Calculator – a simple and effective web tool designed to help you estimate your daily calorie needs based on your personal information and lifestyle. Whether you're trying to lose weight, maintain your current weight, or gain muscle, our calculator gives you a good starting point.
 
 🔍 What It Does
