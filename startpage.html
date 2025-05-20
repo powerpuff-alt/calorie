@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome | Health & Calorie Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .start-page {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      max-width: 500px;
+      width: 90%;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .start-page h1 {
+      font-size: 2.4em;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .start-page p {
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .start-btn {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      font-size: 1em;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s;
+    }
+
+    .start-btn:hover {
+      background-color: #45a049;
+      transform: translateY(-2px);
+    }
+
+    body.dark-mode .start-page {
+      background-color: #1e1e1e;
+    }
+
+    body.dark-mode .start-page h1,
+    body.dark-mode .start-page p {
+      color: #ddd;
+    }
+
+    body.dark-mode .start-btn {
+      background-color: #66bb6a;
+    }
+
+    @media (max-width: 480px) {
+      .start-page h1 {
+        font-size: 1.8em;
+      }
+
+      .start-page p {
+        font-size: 1em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="theme-toggle-container">
+    <label class="switch" aria-label="Toggle dark mode">
+      <input type="checkbox" id="toggleTheme">
+      <span class="slider"></span>
+    </label>
+  </div>
+
+  <div class="start-page">
+    <h1>Welcome to the Health & Calorie Tracker</h1>
+    <p>Your personal tool to calculate daily calorie needs and get meal suggestions tailored to your lifestyle.</p>
+    <button class="start-btn" onclick="startApp()">Get Started</button>
+  </div>
+
+  <script>
+    // Dark mode toggle
+    document.getElementById("toggleTheme").addEventListener("change", function () {
+      document.body.classList.toggle("dark-mode", this.checked);
+    });
+
+    function startApp() {
+      window.location.href = "index.html"; // Or wherever your main app is
+    }
+  </script>
+</body>
+</html>
