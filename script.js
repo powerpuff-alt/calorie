@@ -1,17 +1,27 @@
 document.getElementById('calculateBtn').addEventListener('click', function () {
   const age = parseInt(document.getElementById('age').value);
-  const weight = parseInt(document.getElementById('weight').value);
-  const height = parseInt(document.getElementById('height').value);
+  const weight = parseFloat(document.getElementById('weight').value);
+  const height = parseFloat(document.getElementById('height').value);
   const activityLevel = parseFloat(document.getElementById('activity').value);
+  const gender = document.querySelector('input[name="gender"]:checked')?.value;
 
-  if (isNaN(age) || isNaN(weight) || isNaN(height)) {
+  if (isNaN(age) || isNaN(weight) || isNaN(height) || !gender || isNaN(activityLevel)) {
     alert('Please fill out all fields.');
     return;
   }
 
-  const bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+  // Calcul du BMR selon le sexe
+  let bmr;
+  if (gender === 'male') {
+    bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+  } else {
+    bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+  }
+
+  // Dépense calorique journalière estimée
   const dailyCalories = Math.round(bmr * activityLevel);
 
+  // Animation d'affichage des résultats
   const inputSection = document.getElementById('inputSection');
   const resultsSection = document.getElementById('resultsSection');
 
@@ -48,28 +58,28 @@ function suggestMeals(calories) {
   if (calories < 2000) {
     mealSuggestions = `
       <ul>
-        <li>Breakfast: Oatmeal with fruits (300 kcal)</li>
-        <li>Lunch: Grilled chicken salad (500 kcal)</li>
-        <li>Dinner: Baked salmon with steamed veggies (400 kcal)</li>
-        <li>Snacks: Yogurt with almonds (200 kcal)</li>
+        <li>Petit déjeuner : Flocons d'avoine aux fruits (300 kcal)</li>
+        <li>Déjeuner : Salade de poulet grillé (500 kcal)</li>
+        <li>Dîner : Saumon au four avec légumes vapeur (400 kcal)</li>
+        <li>Collation : Yaourt aux amandes (200 kcal)</li>
       </ul>
     `;
   } else if (calories < 2500) {
     mealSuggestions = `
       <ul>
-        <li>Breakfast: Scrambled eggs with avocado (450 kcal)</li>
-        <li>Lunch: Chicken rice bowl (700 kcal)</li>
-        <li>Dinner: Grilled steak with roasted potatoes (600 kcal)</li>
-        <li>Snacks: Protein smoothie (300 kcal)</li>
+        <li>Petit déjeuner : Œufs brouillés avec avocat (450 kcal)</li>
+        <li>Déjeuner : Bol de riz au poulet (700 kcal)</li>
+        <li>Dîner : Steak grillé avec pommes de terre rôties (600 kcal)</li>
+        <li>Collation : Smoothie protéiné (300 kcal)</li>
       </ul>
     `;
   } else {
     mealSuggestions = `
       <ul>
-        <li>Breakfast: Pancakes with bacon (600 kcal)</li>
-        <li>Lunch: Turkey sandwich with cheese (800 kcal)</li>
-        <li>Dinner: Grilled fish with quinoa and veggies (700 kcal)</li>
-        <li>Snacks: Peanut butter toast (400 kcal)</li>
+        <li>Petit déjeuner : Pancakes avec bacon (600 kcal)</li>
+        <li>Déjeuner : Sandwich à la dinde et fromage (800 kcal)</li>
+        <li>Dîner : Poisson grillé avec quinoa et légumes (700 kcal)</li>
+        <li>Collation : Tartine au beurre de cacahuètes (400 kcal)</li>
       </ul>
     `;
   }
